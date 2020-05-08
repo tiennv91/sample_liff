@@ -9,7 +9,6 @@
   </head>
   <body>
     <div class="container" style="margin-top: 50px;">
-      <form>
         <div class="form-group">
           <label for="email">Email address</label>
           <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
@@ -18,27 +17,28 @@
           <label for="password">Password</label>
           <input type="password" class="form-control" id="password" name="password" placeholder="Password">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+        <button type="submit" id="submit" class="btn btn-primary">Submit</button>
     </div>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
     <script src="liff-starter.js"></script>
     <script>
       // sendMessages call
-      document.getElementById('sendMessageButton').addEventListener('click', function() {
-          if (!liff.isInClient()) {
-              sendAlertIfNotInClient();
-          } else {
-              liff.sendMessages([{
-                  'type': 'text',
-                  'text': "You've successfully sent a message! Hooray!"
-              }]).then(function() {
-                  window.alert('Message sent');
-              }).catch(function(error) {
-                  window.alert('Error sending message: ' + error);
-              });
-          }
+      document.getElementById('submit').addEventListener('click', function() {
+        if (!liff.isInClient()) {
+            sendAlertIfNotInClient();
+        } else {
+          let email = document.getElementById('email').value;
+          let password = document.getElementById('password').value;
+          liff.sendMessages([{
+              'type': 'text',
+              'text': "Register with: " + email
+          }]).then(function() {
+              window.alert('Message sent');
+          }).catch(function(error) {
+              window.alert('Error sending message: ' + error);
+          });
+        }
       });
     </script>
   </body>
