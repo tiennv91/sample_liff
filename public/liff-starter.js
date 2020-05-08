@@ -122,9 +122,9 @@ function registerButtonHandlers() {
 
     // sendMessages call
     document.getElementById('sendMessageButton').addEventListener('click', function() {
-        if (!liff.isInClient()) {
-            sendAlertIfNotInClient();
-        } else {
+        // if (!liff.isInClient()) {
+        //     sendAlertIfNotInClient();
+        // } else {
             liff.sendMessages([{
                 'type': 'text',
                 'text': "You've successfully sent a message! Hooray!"
@@ -133,7 +133,7 @@ function registerButtonHandlers() {
             }).catch(function(error) {
                 window.alert('Error sending message: ' + error);
             });
-        }
+        // }
     });
 
     // scanCode call
